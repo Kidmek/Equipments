@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 
-interface InputFieldProps {
-  type?: "text" | "email" | "password" | "number";
+export interface InputFieldProps {
+  type?: "text" | "email" | "password" | "number" | "textarea";
   placeholder?: string;
   value?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
   className?: string;
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
@@ -19,7 +19,10 @@ export default function InputField({
 }: InputFieldProps) {
   return (
     <div
-      className={`flex items-center border border-[#9098B1] px-[16px] py-[12px] rounded-[25px]  focus-within:border-[#2A76AA] text-[var(--gray-text)] focus-within:text-[#2A76AA] font-poppins ${className}`}
+      className={`flex items-center border
+         border-[#9098B1] px-[16px] py-[12px] rounded-[25px] 
+          focus-within:border-[#2A76AA] text-[var(--gray-text)]
+           focus-within:text-[#2A76AA] font-poppins ${className}`}
       style={{
         fontSize: "12px",
         lineHeight: "21.6px",
@@ -32,13 +35,22 @@ export default function InputField({
           <Icon />
         </span>
       )}
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className="flex-1 focus:outline-none"
-      />
+      {type === "textarea" ? (
+        <textarea
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="flex-1 focus:outline-none bg-transparent"
+        />
+      ) : (
+        <input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="flex-1 focus:outline-none bg-transparent"
+        />
+      )}
     </div>
   );
 }

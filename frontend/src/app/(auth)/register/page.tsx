@@ -26,31 +26,31 @@ export default function RegistrationPage() {
       <div className="pt-[48px] w-[90vw] flex flex-col gap-[11px]">
         <InputField
           Icon={UsersIcon}
-          onChange={(e) => setUser({ ...user, accountType: e.target.value })}
+          onChange={(value) => setUser({ ...user, accountType: value })}
           value={user.accountType}
           placeholder="Account Type"
         />
         <InputField
           Icon={AuthUserIcon}
-          onChange={(e) => setUser({ ...user, name: e.target.value })}
+          onChange={(value) => setUser({ ...user, name: value })}
           value={user.name}
           placeholder="Name"
         />
         <InputField
           Icon={PhoneIcon}
-          onChange={(e) => setUser({ ...user, phone: e.target.value })}
+          onChange={(value) => setUser({ ...user, phone: value })}
           value={user.phone}
           placeholder="Mobile Number"
         />
         <InputField
           Icon={EmailIcon}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          onChange={(value) => setUser({ ...user, email: value })}
           value={user.email}
           placeholder="Your Email"
         />
         <InputField
           Icon={PasswordIcon}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          onChange={(value) => setUser({ ...user, password: value })}
           value={user.password}
           placeholder="Password"
           type="password"

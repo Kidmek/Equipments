@@ -18,6 +18,10 @@ export default function BottomNav() {
     router.push(route);
   };
 
+  if (location === "/add") {
+    return null;
+  }
+
   return (
     <nav
       className="flex flex-row items-end justify-between space-y-4 pb-[36px] px-[28px]"

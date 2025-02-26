@@ -17,16 +17,16 @@ export default function PhoneEmailPage() {
       <div className="pt-[48px] w-[90vw] flex flex-col gap-[11px]">
         <InputField
           Icon={AuthUserIcon}
-          onChange={(e) =>
-            setCredentials({ ...credentials, emailOrPhone: e.target.value })
+          onChange={(value) =>
+            setCredentials({ ...credentials, emailOrPhone: value })
           }
           value={credentials.emailOrPhone}
           placeholder="Enter Mobile Number or Email"
         />
         <InputField
           Icon={PasswordIcon}
-          onChange={(e) =>
-            setCredentials({ ...credentials, password: e.target.value })
+          onChange={(value) =>
+            setCredentials({ ...credentials, password: value })
           }
           value={credentials.password}
           placeholder="Enter Password"

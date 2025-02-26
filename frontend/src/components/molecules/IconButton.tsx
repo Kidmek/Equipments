@@ -5,12 +5,19 @@ import React from "react";
 
 interface Props {
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>; // Add more icons as needed
-  label: string;
+  label?: string;
   bgColor?: string;
   onClick: () => void;
+  style?: React.CSSProperties;
 }
 
-export default function IconButton({ Icon, label, bgColor, onClick }: Props) {
+export default function IconButton({
+  Icon,
+  label,
+  bgColor,
+  onClick,
+  style,
+}: Props) {
   return (
     <button
       onClick={onClick}
@@ -22,6 +29,7 @@ export default function IconButton({ Icon, label, bgColor, onClick }: Props) {
         backgroundColor: bgColor ?? "var(--gray-bg)",
         padding: "11px 20%",
         borderRadius: "25px",
+        ...(style ?? {}),
       }}
       type="button"
     >
@@ -32,12 +40,14 @@ export default function IconButton({ Icon, label, bgColor, onClick }: Props) {
           }}
         />
       )}
-      <Typography
-        color={bgColor ? "white" : "var(--primary)"}
-        className="flex-1"
-      >
-        {label}
-      </Typography>
+      {label && (
+        <Typography
+          color={bgColor ? "white" : "var(--primary)"}
+          className="flex-1"
+        >
+          {label}
+        </Typography>
+      )}
     </button>
   );
 }

@@ -30,12 +30,13 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     /* Custom Variables */
-    --primary: rgba(0, 35, 71, 1);
+    --primary: rgb(0, 35, 71);
     --gray-text: rgba(144, 152, 177, 1);
     --gray-bg: rgba(245, 245, 245, 1);
-    --font-montserrat: 'Montserrat', "Montserrat Fallback";
-    --font-poppins: 'Poppins', "Poppins Fallback";
+    --font-montserrat: "Montserrat", "Montserrat Fallback";
+    --font-poppins: "Poppins", "Poppins Fallback";
     --orange: rgb(255, 142, 0);
+    --secondary-text: #252b5c;
   }
   .dark {
     --background: 0 0% 3.9%;

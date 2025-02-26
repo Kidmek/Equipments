@@ -35,3 +35,9 @@ import FilterImage from "/public/home/sort-settings.png";
 import SortImage from "/public/home/sort.png";
 
 export { FilterImage, SortImage };
+
+//
+
+import BackIcon from "/public/back.svg";
+
+export { BackIcon };

@@ -1,48 +1,133 @@
-import { HouseType } from "./types";
+export enum EquipmentCategory {
+  EARTHMOVING_EQUIPMENT = "EARTHMOVING_EQUIPMENT",
+  CONSTRUCTION_VEHICLES = "CONSTRUCTION_VEHICLES",
+  MATERIAL_HANDLING = "MATERIAL_HANDLING",
+  CONCRETE_EQUIPMENT = "CONCRETE_EQUIPMENT",
+  COMPACTION_EQUIPMENT = "COMPACTION_EQUIPMENT",
+  PAVING_EQUIPMENT = "PAVING_EQUIPMENT",
+}
 
-export const Houses: HouseType[] = [
+export enum EquipmentType {
+  // Earthmoving Equipment
+  EXCAVATOR = "EXCAVATOR",
+  BULLDOZER = "BULLDOZER",
+  LOADER = "LOADER",
+  BACKHOE = "BACKHOE",
+  GRADER = "GRADER",
+
+  // Construction Vehicles
+  DUMP_TRUCK = "DUMP_TRUCK",
+  WATER_TRUCK = "WATER_TRUCK",
+  CONCRETE_MIXER_TRUCK = "CONCRETE_MIXER_TRUCK",
+
+  // Material Handling
+  FORKLIFT = "FORKLIFT",
+  TELEHANDLER = "TELEHANDLER",
+  CRANE = "CRANE",
+  HOIST = "HOIST",
+
+  // Concrete Equipment
+  CONCRETE_MIXER = "CONCRETE_MIXER",
+  CONCRETE_PUMP = "CONCRETE_PUMP",
+  CONCRETE_VIBRATOR = "CONCRETE_VIBRATOR",
+
+  // Compaction Equipment
+  ROLLER = "ROLLER",
+  PLATE_COMPACTOR = "PLATE_COMPACTOR",
+  RAMMER = "RAMMER",
+
+  // Paving Equipment
+  ASPHALT_PAVER = "ASPHALT_PAVER",
+  ROAD_ROLLER = "ROAD_ROLLER",
+  CHIP_SPREADER = "CHIP_SPREADER",
+}
+
+type EquipmentCategoryMapType = {
+  [key in EquipmentCategory]: EquipmentType[];
+};
+
+export const EquipmentCategoryMap: EquipmentCategoryMapType = {
+  [EquipmentCategory.EARTHMOVING_EQUIPMENT]: [
+    EquipmentType.EXCAVATOR,
+    EquipmentType.BULLDOZER,
+    EquipmentType.LOADER,
+    EquipmentType.BACKHOE,
+    EquipmentType.GRADER,
+  ],
+  [EquipmentCategory.CONSTRUCTION_VEHICLES]: [
+    EquipmentType.DUMP_TRUCK,
+    EquipmentType.WATER_TRUCK,
+    EquipmentType.CONCRETE_MIXER_TRUCK,
+  ],
+  [EquipmentCategory.MATERIAL_HANDLING]: [
+    EquipmentType.FORKLIFT,
+    EquipmentType.TELEHANDLER,
+    EquipmentType.CRANE,
+    EquipmentType.HOIST,
+  ],
+  [EquipmentCategory.CONCRETE_EQUIPMENT]: [
+    EquipmentType.CONCRETE_MIXER,
+    EquipmentType.CONCRETE_PUMP,
+    EquipmentType.CONCRETE_VIBRATOR,
+  ],
+  [EquipmentCategory.COMPACTION_EQUIPMENT]: [
+    EquipmentType.ROLLER,
+    EquipmentType.PLATE_COMPACTOR,
+    EquipmentType.RAMMER,
+  ],
+  [EquipmentCategory.PAVING_EQUIPMENT]: [
+    EquipmentType.ASPHALT_PAVER,
+    EquipmentType.ROAD_ROLLER,
+    EquipmentType.CHIP_SPREADER,
+  ],
+};
+
+export enum SortOrderEnums {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+export enum SortByEnums {
+  PRICE = "price",
+  QUANTITY = "quantity",
+  CREATED_AT = "createdAt",
+}
+export const SortOptions: { label: string; value: SortByEnums }[] = [
   {
-    id: 1,
-    title: "Apartment for rent",
-    originalPrice: "35,000",
-    discountedPrice: "34,000",
-    subCity: "CMC",
-    city: "Addis Ababa",
-    country: "Ethiopia",
-    beds: 3,
-    baths: 2,
-    size: 140,
-    image: "/home/house1.jpg",
-    featured: true,
+    label: "Price",
+    value: SortByEnums.PRICE,
   },
   {
-    id: 2,
-    title: "Apartment for sale",
-    originalPrice: "75,000",
-    discountedPrice: "74,000",
-    subCity: "Bole",
-    city: "Addis Ababa",
-    country: "Ethiopia",
-    beds: 5,
-    baths: 3,
-    size: 340,
-    image: "/home/house2.jpg",
+    label: "Quantity",
+    value: SortByEnums.QUANTITY,
   },
   {
-    id: 3,
-    title: "Apartment for sale",
-    originalPrice: "75,000",
-    discountedPrice: "74,000",
-    subCity: "Bole",
-    city: "Addis Ababa",
-    country: "Ethiopia",
-    beds: 5,
-    baths: 3,
-    size: 340,
-    image: "/home/house2.jpg",
-    featured: true,
+    label: "Created At",
+    value: SortByEnums.CREATED_AT,
   },
 ];
 
-export const Places = ["Bole", "4 Kilo", "5 Kilo", "6 Kilo"];
-export const PropertyTypes = ["Villa", "Apartment", "Condomminum"];
+export const SortOrderOptions: Record<
+  "time" | "number",
+  { label: string; value: SortOrderEnums }[]
+> = {
+  time: [
+    {
+      label: "Oldest to newest",
+      value: SortOrderEnums.DESC,
+    },
+    {
+      label: "Newest to oldest",
+      value: SortOrderEnums.ASC,
+    },
+  ],
+  number: [
+    {
+      label: "Highest to lowest",
+      value: SortOrderEnums.DESC,
+    },
+    {
+      label: "Lowest to highest",
+      value: SortOrderEnums.ASC,
+    },
+  ],
+};
