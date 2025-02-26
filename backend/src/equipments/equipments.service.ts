@@ -73,6 +73,10 @@ export class EquipmentsService {
     sortOrder: 'ASC' | 'DESC' = 'ASC',
     page = 1,
     limit = 10,
+    minPrice?: number,
+    maxPrice?: number,
+    minQuantity?: number,
+    maxQuantity?: number,
   ): Promise<{
     data: Equipment[];
     total: number;
@@ -81,14 +85,14 @@ export class EquipmentsService {
   }> {
     const query = this.equipmentRepository.createQueryBuilder('equipment');
 
-    // Search by description or name
+    // Search filter
     if (search) {
       query.andWhere('equipment.description ILIKE :search', {
         search: `%${search}%`,
       });
     }
 
-    // Filtering logic
+    // Category and type filter
     if (category && type) {
       query.andWhere(
         'equipment.category = :category AND equipment.type = :type',
@@ -96,6 +100,22 @@ export class EquipmentsService {
       );
     } else if (category) {
       query.andWhere('equipment.category = :category', { category });
+    }
+
+    // Price filtering
+    if (minPrice !== undefined) {
+      query.andWhere('equipment.price >= :minPrice', { minPrice });
+    }
+    if (maxPrice !== undefined) {
+      query.andWhere('equipment.price <= :maxPrice', { maxPrice });
+    }
+
+    // Quantity filtering
+    if (minQuantity !== undefined) {
+      query.andWhere('equipment.quantity >= :minQuantity', { minQuantity });
+    }
+    if (maxQuantity !== undefined) {
+      query.andWhere('equipment.quantity <= :maxQuantity', { maxQuantity });
     }
 
     // Sorting

@@ -9,6 +9,8 @@ import {
   Query,
   UseInterceptors,
   UploadedFiles,
+  ValidationPipe,
+  BadRequestException,
 } from '@nestjs/common';
 import { CreateEquipmentDto } from './dto/create-equipment.dto';
 import { UpdateEquipmentDto } from './dto/update-equipment.dto';
@@ -24,12 +26,17 @@ export class EquipmentsController {
   @ApiConsumes('multipart/form-data') // Tells Swagger this will handle multipart form data
   @UseInterceptors(FileUploadInterceptor)
   async create(
-    @Body() createEquipmentDto: CreateEquipmentDto, // Handle other form data
+    @Body(new ValidationPipe({ transform: true }))
+    createEquipmentDto: CreateEquipmentDto, // Handle other form data
     @UploadedFiles() files: Express.Multer.File[], // Handle the uploaded files
   ) {
+    if (!files || files.length === 0) {
+      throw new BadRequestException('At least one image must be provided.');
+    }
     const imageUrls = files.map((file) => file.filename); // Store the file paths in the imageUrls array
     return this.equipmentService.create(createEquipmentDto, imageUrls);
   }
+
   @Put(':id')
   @ApiConsumes('multipart/form-data') // Tells Swagger this will handle multipart form data
   @UseInterceptors(FileUploadInterceptor)
@@ -52,6 +59,10 @@ export class EquipmentsController {
       query.sortOrder,
       Number(query.page) || 1, // Ensure default values are applied
       Number(query.limit) || 10,
+      Number(query.minPrice) || undefined,
+      Number(query.maxPrice) || undefined,
+      Number(query.minQuantity) || undefined,
+      Number(query.maxQuantity) || undefined,
     );
   }
 
