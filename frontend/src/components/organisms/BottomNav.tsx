@@ -50,8 +50,8 @@ export default function BottomNav() {
       <NavButton
         Icon={HeartIcon}
         label="My Ads"
-        selected={location === "/heart"}
-        onClick={() => handleButtonClick("/heart")}
+        selected={location === "/hearted"}
+        onClick={() => handleButtonClick("/hearted")}
       />
       <NavButton
         Icon={UserIcon}
