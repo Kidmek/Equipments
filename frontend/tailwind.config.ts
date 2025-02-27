@@ -11,8 +11,8 @@ export default {
         lato: ["var(--font-lato)"],
       },
       colors: {
-        grayText: "hsl(var(--gray-text))",
-        grayBg: "hsl(var(--gray-bg))",
+        grayText: "var(--gray-text)",
+        grayBg: "var(--gray-bg)",
         orange: "var(--orange)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

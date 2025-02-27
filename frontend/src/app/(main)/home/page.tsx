@@ -151,7 +151,7 @@ export default function HomePage() {
       </div>
 
       {/* Search Bar */}
-      <div className="relative w-full">
+      <div className="relative w-full hidden">
         <input
           type="text"
           placeholder="Search..."
