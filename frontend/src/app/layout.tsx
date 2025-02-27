@@ -17,8 +17,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Gojo",
-  description: "Ethiopian real estate platform",
+  title: "Equipments",
+  description: "Ethiopian equipments platform",
 };
 
 export default function RootLayout({
