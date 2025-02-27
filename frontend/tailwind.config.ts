@@ -13,7 +13,7 @@ export default {
       colors: {
         grayText: "hsl(var(--gray-text))",
         grayBg: "hsl(var(--gray-bg))",
-        orange: "hsl(var(--orange))",
+        orange: "var(--orange)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

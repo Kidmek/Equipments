@@ -70,6 +70,9 @@ export class Equipment {
   @Column('int')
   quantity: number;
 
+  @Column('text')
+  phone: string;
+
   @Column('text', { array: true })
   images: string[];
 

@@ -17,5 +17,5 @@ export function getImageUrl(image?: string): string {
   if (!image) {
     return "/logo.png";
   }
-  return `http://localhost:9000/uploads/${image}`;
+  return `${process.env.NEXT_PUBLIC_API}/uploads/${image}`;
 }

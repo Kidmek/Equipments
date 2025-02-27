@@ -18,10 +18,9 @@ export default function BottomNav() {
     router.push(route);
   };
 
-  if (location === "/add") {
+  if (location === "/add" || location.startsWith("/home/")) {
     return null;
   }
-
   return (
     <nav
       className="flex flex-row items-end justify-between space-y-4 pb-[36px] px-[28px]"
@@ -32,8 +31,8 @@ export default function BottomNav() {
       <NavButton
         Icon={HomeIcon}
         label="Home"
-        selected={location === "/"}
-        onClick={() => handleButtonClick("/")}
+        selected={location === "/home"}
+        onClick={() => handleButtonClick("/home")}
       />
       <NavButton
         Icon={SearchIcon}

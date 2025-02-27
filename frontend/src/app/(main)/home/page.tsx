@@ -51,6 +51,7 @@ export default function HomePage() {
   const [activeOverlay, setActiveOverlay] = useState<OverlayType>(null);
   const [loading, setLoading] = useState(false);
   const [equipments, setEquipments] = useState<SingleEquipmentType[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearchAndFilter = useCallback(async () => {
     setLoading(true);
@@ -75,19 +76,27 @@ export default function HomePage() {
     });
 
     const queryString = new URLSearchParams(params).toString();
-    const response = await fetch(
-      `http://localhost:9000/equipment?${queryString}`,
-      {
-        method: "GET",
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/equipment?${queryString}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const resJson = await response.json();
+      if (resJson.data) {
+        setEquipments(resJson.data);
+        setError(null);
+      } else {
+        setError("Unable to fetch equipments");
       }
-    );
-
-    const resJson = await response.json();
-    if (resJson.data) {
-      setEquipments(resJson.data);
+    } catch (error) {
+      console.log(error);
+      setError("Network error");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }, [filter, minMaxFilters, sortFilters]);
 
   const handleInputChange = (key: keyof Filter, value: string) => {
@@ -202,6 +211,8 @@ export default function HomePage() {
         equipments.map((equipment) => (
           <EquipmentCard key={equipment.id} equipment={equipment} />
         ))
+      ) : error ? (
+        <div className="text-red-400 text-center py-4">{error}</div>
       ) : (
         <div className="text-gray-500 text-center py-4">
           No equipment found matching your criteria.

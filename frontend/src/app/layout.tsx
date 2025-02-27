@@ -29,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.className} ${poppins.className} ${montserrat.className} antialiased h-screen flex flex-col justify-between `}
+        className={`${lato.className} ${poppins.className} 
+        ${montserrat.className} antialiased h-screen flex 
+        flex-col justify-between max-w-lg mx-auto`}
       >
         <main className="flex-1 overflow-y-auto">{children}</main>
         <BottomNav />

@@ -1,9 +1,9 @@
 // NAV
-import HomeIcon from "/public/nav/home.svg";
-import SearchIcon from "/public/nav/search.svg";
-import HeartIcon from "/public/nav/offer.svg";
-import PlusIcon from "/public/nav/plus.svg";
-import UserIcon from "/public/nav/user.svg";
+import HomeIcon from "/public/nav/Home.svg";
+import SearchIcon from "/public/nav/Search.svg";
+import HeartIcon from "/public/nav/Offer.svg";
+import PlusIcon from "/public/nav/Plus.svg";
+import UserIcon from "/public/nav/User.svg";
 
 export { HomeIcon, SearchIcon, HeartIcon, PlusIcon, UserIcon };
 

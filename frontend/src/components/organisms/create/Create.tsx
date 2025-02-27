@@ -47,10 +47,9 @@ export default function AddPost() {
     formData.append("type", post.type || "");
     formData.append("category", post.category || "");
     formData.append("description", post.description || "");
-    // Convert to numbers explicitly before appending
-    if (post.price) formData.append("price", String(parseFloat(post.price)));
-    if (post.quantity)
-      formData.append("quantity", String(parseInt(post.quantity, 10)));
+    formData.append("phone", post.phone || "");
+    formData.append("price", post.price || "");
+    formData.append("quantity", post.quantity || "");
 
     post.images.forEach((image) => {
       if (image) {
@@ -68,7 +67,7 @@ export default function AddPost() {
 
     try {
       const formData = await prepareFormData();
-      const response = await fetch("http://localhost:9000/equipment", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/equipment`, {
         method: "POST",
         body: formData,
       });

@@ -24,6 +24,12 @@ export default function Details({ post, setPost }: StepProps) {
           type="number"
         />
         <CreateInput
+          label="Phone"
+          value={post.phone ?? ""}
+          setValue={(v) => setPost({ ...post, phone: v })}
+          type="number"
+        />
+        <CreateInput
           label="Description"
           value={post.description ?? ""}
           setValue={(v) => setPost({ ...post, description: v })}

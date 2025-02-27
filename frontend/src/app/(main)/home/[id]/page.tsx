@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, Eye } from "lucide-react"; // Eye icon for selected image
+import { ChevronLeft, Eye, Phone } from "lucide-react"; // Eye icon for selected image
 import { formatEnumString, getImageUrl } from "@/lib/utils";
 import Typography from "@/components/atoms/Typography";
 import { SingleEquipmentType } from "@/constants/types";
@@ -30,7 +30,7 @@ export default function EquipmentPage({
     if (!id) return;
 
     setLoading(true);
-    fetch(`http://localhost:9000/equipment/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API}/equipment/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setEquipment(data);
@@ -145,11 +145,21 @@ export default function EquipmentPage({
         </div>
 
         {/* Contact Info */}
-        <div className="mt-6 p-4 bg-white shadow rounded-lg">
-          <Typography className="font-semibold">Contact</Typography>
-          <Typography className="text-blue-500">
-            {equipment.phoneNumber}
+        <div className="mt-6 p-4 flex flex-col gap-2 bg-white shadow rounded-lg">
+          <Typography weight="800" color="var(--primary)" size={15}>
+            Contact
           </Typography>
+          <div
+            className="flex gap-2 items-center cursor-pointer"
+            onClick={() => {
+              window.location.href = `tel:${equipment.phone}`;
+            }}
+          >
+            <Phone className="text-orange" />
+            <Typography className="text-orange" size={14}>
+              {equipment.phone}
+            </Typography>
+          </div>
         </div>
       </div>
 

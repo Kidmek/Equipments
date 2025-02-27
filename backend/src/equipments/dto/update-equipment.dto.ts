@@ -30,6 +30,11 @@ export class UpdateEquipmentDto {
   price?: number;
 
   @ApiPropertyOptional()
+  @IsString()
+  @IsOptional()
+  phone: string;
+
+  @ApiPropertyOptional()
   @IsNumber()
   @IsOptional()
   quantity?: number;

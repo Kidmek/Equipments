@@ -22,7 +22,6 @@ export class CreateEquipmentDto {
   @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   @Transform(({ value }: TransformFnParams) => {
     const parsed = parseFloat(value as string);
     return isNaN(parsed) ? 0 : parsed; // Fallback to 0 if parsing fails
@@ -30,9 +29,13 @@ export class CreateEquipmentDto {
   price: number;
 
   @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  phone: string;
+
+  @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   @Transform(({ value }: TransformFnParams) => {
     const parsed = parseInt(value as string);
     return isNaN(parsed) ? 0 : parsed; // Fallback to 0 if parsing fails

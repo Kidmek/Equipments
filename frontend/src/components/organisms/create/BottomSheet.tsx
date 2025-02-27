@@ -29,11 +29,11 @@ export default function BottomSheet({
   return (
     <div
       className="fixed inset-0 bg-black 
-    bg-opacity-50 flex items-end justify-center z-50"
+    bg-opacity-50 flex items-end justify-center z-50 "
     >
       <div
         className="bg-white rounded-t-3xl w-full h-[70vh] 
-      p-6 flex flex-col justify-between"
+      p-6 flex flex-col justify-between max-w-lg"
       >
         {/* Close Button */}
         <div className="flex justify-end">

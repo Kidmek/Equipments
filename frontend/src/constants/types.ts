@@ -7,6 +7,7 @@ export type PostType = {
   images: (File | null)[];
   price?: string;
   quantity?: string;
+  phone?: string;
 };
 
 export type SingleEquipmentType = {
@@ -18,7 +19,7 @@ export type SingleEquipmentType = {
   price: string;
   quantity: number;
   featured?: boolean;
-  phoneNumber?: string;
+  phone?: string;
 };
 
 export type MinMaxFilterType = {
